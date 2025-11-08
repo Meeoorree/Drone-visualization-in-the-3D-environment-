@@ -347,7 +347,6 @@
         for (let i = 1; i < lines.length; i++) {
             const line = lines[i];
             if (!line) continue;
-            // Fix for inconsistent data (like "1.TP5" instead of "1,TP5")
             const correctedLine = line.replace(/^(\d+)\.(TP\d)/, '$1,$2');
             const values = correctedLine.split(',');
             if (values.length !== headers.length) {
@@ -520,56 +519,35 @@
         ground.rotation.x = -Math.PI/2;
         ground.receiveShadow = true;
         scene.add(ground);
-
-        // Boundary walls
+        
         createBoundaryWalls();
-
-        // Main buildings
         createBuilding(-50, 0, -20, 40, 35, 25, 0x8B4513);
         createBuilding(30, 0, -40, 35, 30, 20, 0x8B4513);
         createBuilding(-80, 0, 60, 30, 25, 15, 0x8B4513);
         createBuilding(0, 0, -80, 45, 40, 30, 0x696969);
         createBuilding(-20, 0, 80, 35, 28, 18, 0x696969);
         createBuilding(150, 0, 0, 40, 25, 15, 0x4169E1);
-        
-        // Additional buildings
         createBuilding(100, 0, 50, 30, 35, 20, 0x8B4513);
         createBuilding(-100, 0, -50, 35, 30, 25, 0x8B4513);
         createBuilding(120, 0, -120, 40, 28, 22, 0x696969);
         createBuilding(-150, 0, 100, 45, 32, 28, 0x4169E1);
-        
-        // Tall dormitories
         createBuilding(180, 0, 100, 35, 50, 30, 0xDEB887);
         createBuilding(180, 0, 150, 35, 50, 30, 0xDEB887);
         createBuilding(-180, 0, -100, 35, 50, 30, 0xDEB887);
         createBuilding(-180, 0, -150, 35, 50, 30, 0xDEB887);
-
-        // Housing complexes
         createHousingComplex(-150, 0, -200, 6, 3);
         createHousingComplex(120, 0, -180, 5, 4);
-
-        // Sports facilities
         createSportsTrack(-150, 0, 0, 60, 40);
         createSportsTrack(150, 0, -50, 50, 35);
-        
-        // Water features
         createWaterFeature(0, 0.1, 50, 60, 40);
         createFountain(50, 80);
-
-        // Parking lots
         createParkingLot(-200, 0, -250, 80, 60);
         createParkingLot(180, 0, -220, 70, 50);
-
-        // Trees
         createTrees();
-        
-        // Pathways
         createPathways();
-        
-        // Street lights
         createStreetLights();
-
-        // Grid
+        
+        
         const gridHelper = new THREE.GridHelper(600, 30, 0x555555, 0x333333);
         scene.add(gridHelper);
     }
@@ -1285,4 +1263,5 @@
     init();
     </script>
 </body>
+
 </html>
